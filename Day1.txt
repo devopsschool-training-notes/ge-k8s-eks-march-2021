@@ -415,24 +415,6 @@ centos
 centos123
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ==================================================================================
 ==================================================================================
 pod.yaml
@@ -452,13 +434,75 @@ spec:
 =======================
 =================================================
 =================================================
+What is POD?
+=======================================
+
+
+ 71  kubectl create -h
+   72  clear
+   73  kubectl create -h
+   74  clear
+   75  ls
+   76  pwd
+   77  ls
+   78  mkdir rajesh
+   79  clear
+   80  cd rajesh/
+   81  ls
+   82  vi pod.yaml
+   83  ls
+   84  kubectl get ns
+   85  clear
+   86  kubectl create ns rajesh
+   87  kubectl get ns
+   88  clear
+   89  ls
+   90  kubectl create -f pod.yaml -n=rajesh
+   91  kubectl get pods
+   92  kubectl get pods -n=rajesh
+   93  kubectl edit pod hello-pod -n=rajesh
+   94  kubectl get pods -n=rajesh --show-labels
+   95  vi pod.yaml
+   96  kubectl apply -f pod.yaml -n=rajesh
+   97  kubectl get pods -n=rajesh --show-labels
+   98  kubectl delete pod hello-pod -n=rajesh
+   99  kubectl delete -f pod.yaml -n=rajesh
+  100  clear
+
+
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  cp            Copy files and directories to and from containers.
+
+
+kubectl port-forward --address 0.0.0.0 pod/hello-pod 80:5000 -n=rajesh
 
 
 
-
-
-
-
+ 71  kubectl get pods -n=rajesh
+   72  kubectl exec hello-pod ls -n=rajesh
+   73  clear
+   74  ls
+   75  kubectl get pods -n=rajesh -o wide
+   76  curl http://10.44.0.3
+   77  clear
+   78  kubectl port-forward
+   79  kubectl port-forward -h
+   80  clear
+   81  kubectl get pods -n=rajesh -o wide
+   82  clear
+   83  kubectl port-forward --address 0.0.0.0 pod/hello-pod 80:5000 -n=rajesh
+   84  kubectl port-forward --address 0.0.0.0 pod/hello-pod 5000:80 -n=rajesh
+   85  clear
+   86  ls
+   87  cd rajesh/
+   88  ls
+   89  kubectl cp pod.yaml hello-pod:/opt -n=rajesh
+   90  kubectl exec hello-pod ls /opt/ -n=rajesh
 
 
 
