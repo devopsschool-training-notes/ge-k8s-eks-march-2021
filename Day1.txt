@@ -668,6 +668,37 @@ kubectl rollout undo deploy/my-dep --to-revision=1 -n=rajesh
 
 
 
+  214  kubectl get pods -n=rajesh
+  215  kubectl create -f pod1.yaml -n=rajesh
+  216  clear
+  217  ls
+  218  vi pod2.yaml ]
+  219  kubectl create -f pod2.yaml -n=rajesh
+  220  kubectl get pods -n=rajesh
+  221  kubectl get pods -n=rajesh --show-lables
+  222  kubectl get pods -n=rajesh --show-labeles
+  223  kubectl get pods -n=rajesh --show-labels
+  224  kubectl create -h
+  225  clear
+  226  kubectl create service -h
+  227  kubectl create service clusterip -h
+  228  clear
+  229  kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+  230  kubectl get svc -n=rajesh
+  231  kubectl get svc -n=rajesh --show-lables
+  232  kubectl get svc -n=rajesh --show-labels
+  233  kubectl get pods -n=rajesh --show-labels
+  234  kubectl describe svc my-cs -n=rajesh
+  235  kubectl edit svc my-cs -n=rajesh
+  236  clear
+  237  kubectl get pods -n=rajesh --show-labels
+  238  kubectl get svc -n=rajesh --show-labels
+  239  kubectl describe svc my-cs -n=rajesh
+  240  kubectl edit svc my-cs -n=rajesh
+  241  clear
+  242  kubectl describe svc my-cs -n=rajesh
+  243  curl http://10.102.124.172:5678
+  244  watch curl http://10.102.124.172:5678
 
 
 
