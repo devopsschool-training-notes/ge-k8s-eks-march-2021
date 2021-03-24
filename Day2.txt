@@ -53,6 +53,81 @@ https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-p
 https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
 https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
+========================================================4
+ConfigMap
+Secret
+------
+jobs
+cronjobs
+--------
+deamonsets
+statefullsets
+---------
+Authen & athu === 6
+===================================================
+============================================================
+ConfigMap
+----------------------
+key:value
+https://www.devopsschool.com/blog/kubernetes-configmap-explained-using-example/
+
+Secret
+------------------------------
+https://www.devopsschool.com/blog/explained-kubernetes-secret-with-example/
+
+Cronjob
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+
+
+pods=$(kubectl get pods --selector=job-name=pi --output=jsonpath='{.items[*].metadata.name}')
+
+---------------------
+1 Sche --> Assingment ---> Node--Kubelet
+2 POD is pending
+3 PodinCreating
+4.POD is running
+5. Failed | Completed
+-----------------------
+Failure - PID1 of the container give non success code
+Completed = === 0
+Deleted
+=================================
+deamonsets
+statefullsets
+
+===============================================
+https://www.devopsschool.com/blog/explained-kubernetes-daemonset-with-example/
+
+statefullsets
+-----------------------------------------
+Deployment			statefullsets
+------------------------------------------------
+Podname-Random-genrated		Podname-Number-genrated
+hellopod-fd34213		hellopod-1 	hellopod-2 	hellopod-3 
+Create - Parrell		Linear	
+Delete - Parrell		Linear	 
+-------------------------------------------
+POD1 --> PVC3 --> PV2		POD1 - PVC1 - PV1			
+POD1 --> PVC3 --> PV1		POD1 - PVC1 - PV1
 
 
 
